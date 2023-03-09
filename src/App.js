@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import RenderForm from "./component/RenderForm";
+import FormValidation from "./component/FormValidation";
+import FormLogin from "./component/FormLogin";
+import ValidateForm from "./component/ValidateForm";
+import CRUDFormik from "./component/CRUDFormik";
+import Layout from "./component/Layout";
+import SearchParams from "./component/SearchParams";
+import NoPage from "./component/NoPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <BrowserRouter>
+       <Layout/>
+       <Routes>
+           <Route path="/" index element={<FormLogin/>}/>
+           <Route path="crudFormik"  element={<CRUDFormik/>} />
+           <Route path="formvalidation" element={<FormValidation/>}/>
+           <Route path="renderform" element={<RenderForm/>}/>
+           <Route path="validateform" element={<ValidateForm/>}/>
+           <Route path="search" element={<SearchParams/>}/>
+           <Route path="*" element={<NoPage/>}/>
+       </Routes>
+   </BrowserRouter>
   );
 }
 
